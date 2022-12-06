@@ -1,0 +1,46 @@
+﻿@using Covid19MVC.Controllers
+@model IEnumerable<Covid19MVC.Models.CountryDTO>
+@{
+    ViewData["Title"] = "Country";
+}
+
+<h1>Country</h1>
+
+<form class="form-control" asp-controller="Home" asp-action="Country" method="get">
+    <lable>Country</lable>
+    <input  type="text"  name="Country" />
+
+    <lable>From </lable>
+    <input type="text" placeholder="2022-2-1" name="FromDate"/>
+
+    <label>To</label>
+    <input type="text"  placeholder="2022-2-4" name="ToDate"/>
+
+    <input  class="btn-danger" type="submit" value="Search" />
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cases)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cases)
+            </td>
+           
+        </tr>
+}
+    </tbody>
+</table>
